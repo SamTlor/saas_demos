@@ -1,0 +1,56 @@
+client / server
+route / endpoint
+
+http commands: get put post delet
+http return codes: 200 is good
+
+
+
+REST is built on http
+json encodes data
+how to communicate data back and forth
+REST has more error codes
+
+service is a program with interface called api
+implemented in different ways
+communicate with it with network
+send messages and receive responses
+multiple endpoints (methods)
+like oop with public and private methods
+public methods for use to outside world and private for personal to the project
+
+methods should be coherent, similar tasks, related
+loose coupling: services shouldn't rely on other services too much
+
+RESTful based on http, www
+RESTless based on other protocols like soap or xml-rpc
+RESTful doesn't have state
+RESTless does have state
+state: knowing that the user sent previous requests earlier
+REST is more scalable
+
+request from the server can be cached for optimization
+
+
+REST characteristics
+uniform interface: protocol that client uses to access server must be consistent
+layered system: 
+
+
+html and xml
+html designed for creating web content and structuring web pages. presents info
+xml designed for data representation and sharing structured info. describes data hierarchies
+both are tag based
+
+json is more succinct than others
+made of key-value pairs
+{} to define objects
+[] for arrays
+ex.
+{
+    "Name": "John doe",
+    "age": 30,
+    "hobbies": ["reading", "swimming"]
+}
+
+rest apis don't return htmlso they return json or similar

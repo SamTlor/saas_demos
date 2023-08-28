@@ -14,17 +14,21 @@ def get_tasks():
     return jsonify({"tasks": tasks})
 
 # Endpoint 2: Get a specific task by ID
+#<int:task_id> makes it expect and int and makes it expect an int with id "task_id"
+#assumes string if not specified
 @app.route('/tasks/<int:task_id>', methods=['GET'])
 def get_task(task_id):
+    #searches for a specific task_id
     task = next((task for task in tasks if task["id"] == task_id), None)
-    if task:
+    if task:#if it finds a task
         return jsonify({"task": task})
-    else:
+    else:#if it was none
         return jsonify({"error": "Task not found"}), 404
 
 # Endpoint 3: Create a new task
 @app.route('/tasks', methods=['POST'])
 def create_task():
+    #picks up a new task and creates it with the given info
     new_task = {
         "id": len(tasks) + 1,
         "title": request.json.get('title'),

@@ -1,4 +1,5 @@
 import requests
+#requests is for client side. request is for server side
 
 def get_all_tasks():
     response = requests.get('http://127.0.0.1:5000/tasks')
