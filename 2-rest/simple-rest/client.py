@@ -31,3 +31,6 @@ if __name__ == '__main__':
     created_task = create_task(new_task_title)
     print(f"\nCreated Task:")
     print(created_task)
+
+    task_not_found = get_task(4)
+    print(f"\nIs task found? {task_not_found}")
