@@ -6,21 +6,24 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'UNguessable'
 auth = HTTPDigestAuth()
 
+#constant so capitalized
 USERS = {
     "rodney": "go_rams"
 }
 
+#starting conditions
 stopwatch_running = False
 start_time = None
 elapsed_time = 0
 
+#authentication stuff is done with the auth var
 @auth.get_password
 def get_pw(username):
     if username in USERS:
         return USERS.get(username)
     return None
 
-
+#sends start in the url so that that endpoint is selected
 @app.route('/start', methods=['GET'])
 @auth.login_required
 def start_stopwatch():
@@ -30,6 +33,7 @@ def start_stopwatch():
         start_time = time.time()
     return "Stopwatch started!", 200
 
+#sends stop in the url so that that endpoint is selected
 @app.route('/stop', methods=['GET'])
 @auth.login_required
 def stop_stopwatch():

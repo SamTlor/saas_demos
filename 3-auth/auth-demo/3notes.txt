@@ -1,0 +1,71 @@
+networked: a services can exist anywhere same machine or over network
+independently deplyable: each service is independently allocated to hardware. don't rely on each other too much
+heterogeneous: allows composing services written in language or framework X to others
+encapsulation: data is hidden and can only be accessed via well defined interfaces
+abstraction: details of each service are hidden
+
+
+
+AUTHENTICATION
+Data security 
+    http: data transmitted in plaintext. vulerable to interception
+    https: uses SSL/TLS encryption for secure data transfer. if someone intercepts it they can't read it
+
+url prefix and port
+    http: begins with "http://" and port 80
+    https: begins with "https://" and a different port
+
+REST authentication
+basic : username and password passed in http header
+        not secure unless on https
+
+digest: MD5 hash server gives you from a password server and client know
+        1. client request: cilent sends http request to server. server responds with 401
+            unauthorized error and a challenge in response header
+        2. challenge creation: the challenge includes a nonce(random number/string) and other
+            parameters. makes hacking harder because hacker must do more work around nonce
+        3. client response: asks user for username and password. client calculates a hash
+            of the username, password, and other parameters as well as the nonce
+        4. client sends response: client sends calculated hash with username and realm in 
+            another http request. if hash matches one calculated by server 200 service code
+
+oauth2: several exchanged messages between client and server. offline secret exchange
+
+
+
+
+man in the middle attack: unauthorized entity intercepts and maybe alters communication 
+                            between two parties
+countermeasures: encryption, digital signitures, PKI
+
+
+type                pros                        cons
+basic               easy to implement           weak security due to plaintext
+token based         enhanced security           token management can be complex
+digest based        more secure than basic      susceptible to certain attacks
+oauth 2.0           delegates access            complex and potential misconfigurations
+                    doesn't expose creds
+
+
+
+how do i evolve my service api if other people depend on it?
+    1. add more endpoints. but it will add a lot of cruft over time
+    2. add release versions and embed them in the url 
+        eg. http://127.0.0.1:5000/v1/user
+
+
+
+very time consuming endpoint 
+Synchronous REST calls take a long time. both server and client commit resources and wait
+    client waits for server to complete 
+    server waits for previous server thread to complete
+
+
+Asynchronous
+    polling: client issues request, gets https 202, then issues other requests for status
+    or result of a completed job
+    events(requires WebSockets): client issues request, server notiies client when complete
+
+WebSockets is a protocol
+    works well with http
+    provides for full duplex communication instead of request-response
