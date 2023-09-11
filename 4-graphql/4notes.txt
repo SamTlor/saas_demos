@@ -1,0 +1,38 @@
+9/6/23
+
+python libraries aren't as good as real api
+want to learn how to use api not the library
+
+apis can be assets or liabilities to a company
+new customers or more support calls
+
+api design
+    small as possible but no smaller
+        minimal set of required methods no extra compleexity
+
+    implementation shouldn't impact api
+        internal implementation don't affect the api exposed to users. 
+        users interact only through the provided endpoints
+
+    minimize accesibility of everything
+        implementation details are kept private
+
+    names matter
+        method names and parameter names are chosen to be descriptive and meaningful
+        make it clear how to use api
+
+    documentaion matters
+        documentation should be provided for each method to explain their purpose and usage
+
+
+graphQL
+introduced by facebook
+to imporove some shortcomings of REST APIs
+    rest apis are rigid
+    lots of use cases dont need all the retrieved data
+    lots of use cases need several api calls to gather specific goal data
+
+at server 
+    sdl to define schema
+    resolver interprets queries
+
